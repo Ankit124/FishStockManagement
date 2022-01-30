@@ -19,9 +19,10 @@ class StockCreateForm(forms.ModelForm):
 		return name
 
 class StockSearchForm(forms.ModelForm):
-   class Meta:
-     model = Stock
-     fields = ['species', 'name']
+	export_to_CSV = forms.BooleanField(required=False)
+	class Meta:
+		model = Stock
+		fields = ['species', 'name']
 
 
 class StockUpdateForm(forms.ModelForm):

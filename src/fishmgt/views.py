@@ -1,8 +1,12 @@
 from email import header
+import csv
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import StockCreateForm, StockSearchForm, StockUpdateForm
+from django.contrib import messages
+
+
 
 # Create your views here.
 def home(request):
@@ -26,6 +30,16 @@ def list_item(request):
         queryset = Stock.objects.filter(species__icontains=form['species'].value(),
 									name__icontains=form['name'].value()
 									)
+        if form['export_to_CSV'].value() == True:
+            response = HttpResponse(content_type='text/csv')
+            response['Content-Disposition'] = "attachment; filename='List of stock.csv'"
+            writer = csv.writer(response)
+            writer.writerow(['SPECIES', 'NAME', 'QUANTITY','LENGTH','LATITUDE','LONGITUDE','TIMESTAMP'])
+            instance = queryset
+            for stock in instance:
+                writer.writerow([stock.species, stock.name, stock.quantity,stock.length,stock.latitude,stock.longitude,stock.timestamp])
+            return response
+
         context = {
             "form": form,
             "header": header,
@@ -37,6 +51,7 @@ def add_items(request):
     form = StockCreateForm(request.POST or None)
     if form.is_valid():
         form.save()
+        messages.success(request, 'Successfully Saved')
         return redirect('/list_item/')
     context = {
         "form": form,

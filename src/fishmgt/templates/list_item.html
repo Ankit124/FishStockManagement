@@ -47,8 +47,15 @@
     {% include 'navbar.html' %}
 
     <main role="main" class="container">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
         <div class="jumbotron">
-            <div class="header">{{title}}</div>
+            <div class="header">{{header}}</div>
 
             <form method='POST' action=''>{% csrf_token %} {{form|crispy}}
                 <input type="submit" value='Search' />

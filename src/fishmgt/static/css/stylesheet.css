@@ -46,3 +46,11 @@ th {
     display: block;
     font-weight: bolder;
 }
+
+.success {
+    list-style: none;
+    background-color: green;
+    color: white;
+    box-shadow: 12px 12px 12px greenyellow;
+    text-align: center;
+}
