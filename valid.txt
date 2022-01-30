@@ -1,7 +1,0 @@
-for instance in Stock.objects.all():
-			if instance.category == category:
-				raise forms.ValidationError(str(category) + ' is already created')
-		return category
-
-
-//in views under clean_category, raised validation error... tried but facing errors in the code too.

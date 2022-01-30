@@ -64,6 +64,9 @@
                             <th>SPECIES</th>
                             <th>NAME</th>
                             <th>QUANTITY IN STORE</th>
+                            <th>LENGTH</th>
+                            <th>LATITUDE</th>
+                            <th>LONGITUDE</th>
                             <th>TIMESTAMP</th>
                         </tr>
                     </thead>
@@ -75,6 +78,9 @@
                             <a href="{% url 'update_items' instance.id %}">{{instance.name}}</a>
                         </td>
                         <td>{{instance.quantity}}</td>
+                        <td>{{instance.length}}</td>
+                        <td>{{instance.latitude}}</td>
+                        <td>{{instance.longitude}}</td>
                         <td>{{instance.timestamp}}</td>
                     </tr>
                     {% endfor %}
