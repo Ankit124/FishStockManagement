@@ -5,6 +5,7 @@ Application having 4 pages in it.
 2) Add Items
 3) Update Items
 4) Stock Details
+5) Export to csv
 
 Now here's a catch, while List and Add you can see over Navbar easily. But if you hover the mouse click on "Name"  in the table, it will redirect you to "Update page" and
 once click on "Quantity In Store" you will redirect to "Stock_detail" page, which I am planning to continue.
