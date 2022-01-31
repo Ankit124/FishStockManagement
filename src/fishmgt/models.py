@@ -21,7 +21,6 @@ class Stock(models.Model):
     latitude = models.CharField(max_length=50, blank=True, null=True)
     longitude = models.CharField(max_length=50, blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=False, auto_now=True)
-    #export_to_CSV = models.BooleanField(default=False)
     
     def __str__(self):
         return self.name

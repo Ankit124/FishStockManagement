@@ -72,3 +72,11 @@ def update_items(request, pk):
 		'form':form
 	}
 	return render(request, 'add_items.html', context)
+
+def stock_detail(request, pk):
+	queryset = Stock.objects.get(id=pk)
+	context = {
+		"title": queryset.name,
+		"queryset": queryset,
+	}
+	return render(request, "stock_detail.html", context)
